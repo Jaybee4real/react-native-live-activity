@@ -1,0 +1,49 @@
+{
+  "name": "@novacraft-engineering/react-native-live-activity",
+  "version": "0.1.0",
+  "description": "Dead-simple live-updating notifications for React Native — iOS Live Activities (ActivityKit + Dynamic Island) and Android ongoing progress notifications, one API.",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "react-native": "src/index.js",
+  "files": [
+    "src",
+    "ios",
+    "template",
+    "RNLiveActivity.podspec",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "react-native",
+    "live-activity",
+    "activitykit",
+    "dynamic-island",
+    "ios",
+    "android",
+    "notification",
+    "progress",
+    "ongoing-notification",
+    "notifee"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/novacraft-engineering/react-native-live-activity.git"
+  },
+  "homepage": "https://github.com/novacraft-engineering/react-native-live-activity#readme",
+  "bugs": {
+    "url": "https://github.com/novacraft-engineering/react-native-live-activity/issues"
+  },
+  "author": "Novacraft Engineering",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@notifee/react-native": ">=7.0.0",
+    "react": ">=17.0.0",
+    "react-native": ">=0.68.0"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
