@@ -17,6 +17,15 @@ export interface AndroidOptions {
   ongoing?: boolean;
 }
 
+export interface Theme {
+  /** Accent hex (e.g. `'#062FA1'`). iOS: tints the widget; Android: notification accent. */
+  accent?: string;
+  /** iOS SF Symbol name for the glyph (e.g. `'bag.fill'`). iOS only. */
+  icon?: string;
+  /** iOS lock-screen background hex. Defaults to the accent. iOS only. */
+  background?: string;
+}
+
 export interface StartOptions {
   /** Stable id — reuse it to update/end this activity. Default: `'live'`. */
   id?: string;
@@ -30,7 +39,9 @@ export interface StartOptions {
   status?: string;
   /** Live countdown target — `Date` or epoch ms. */
   deadline?: Date | number;
-  /** Android-only presentation overrides. */
+  /** Colors + icon, applied on both platforms. Set at start; see `configure` for global defaults. */
+  theme?: Theme;
+  /** Android-only presentation overrides (take precedence over `theme`). */
   android?: AndroidOptions;
 }
 
@@ -69,6 +80,7 @@ export interface FlowTemplate {
   id?: string;
   title?: string;
   stages: Stage[];
+  theme?: Theme;
   android?: AndroidOptions;
 }
 

@@ -203,6 +203,36 @@ await LiveActivity.update(id, {title, stages, stage, status});
 
 ## Customization
 
+### Theme it from JS (both platforms)
+
+The fastest way to change how it looks — no Swift, no rebuild:
+
+```js
+await LiveActivity.start({
+  title: 'Order on the way',
+  stages: ['Confirmed', 'Preparing', 'Out for delivery', 'Delivered'],
+  theme: {
+    accent: '#FF6A00',   // tints the widget (iOS) + notification accent (Android)
+    icon: 'bag.fill',    // iOS SF Symbol — https://developer.apple.com/sf-symbols
+    background: '#101010' // iOS lock-screen background (defaults to accent)
+  },
+});
+```
+
+| `theme` field | iOS | Android |
+|---------------|-----|---------|
+| `accent` | widget tint + progress + glyph color | notification accent color |
+| `icon` | SF Symbol glyph | — (use `android.smallIcon`) |
+| `background` | lock-screen background | — |
+
+`theme` is applied when the activity **starts** (ActivityKit fixes it for the
+activity's life). To restyle mid-flight, `end()` and `start()` again. Set it per
+call, per [flow](#reusable-flows), or globally with `configure({color})`.
+
+For layout changes beyond colors/icon (different rows, fonts, a custom Dynamic
+Island), edit `LiveActivityWidget.swift` — it's plain SwiftUI and reads the same
+`theme` fields off `context.attributes`.
+
 ### Android
 
 ```js
@@ -221,13 +251,15 @@ await LiveActivity.start({
 });
 ```
 
-### iOS
+### iOS layout
 
-The look lives in `LiveActivityWidget.swift` — plain SwiftUI. Change `accent`,
-`glyph`, fonts, or the whole layout. It reads:
+Colors and the icon come from [`theme`](#theme-it-from-js-both-platforms) — you
+usually won't touch Swift. For structural changes (rows, fonts, a bespoke Dynamic
+Island), edit `LiveActivityWidget.swift`. It's plain SwiftUI reading:
 
-- `context.attributes.title` / `context.attributes.stageLabels` — static
-- `context.state.stageIndex` / `context.state.statusLine` — live
+- `context.attributes.title` / `.stageLabels` — static text
+- `context.attributes.accentColorHex` / `.iconSystemName` / `.backgroundColorHex` — the theme from JS
+- `context.state.stageIndex` / `.statusLine` — live values
 
 The default renders a titled header, a progress bar, a ✓/●/○ stage checklist on
 the lock screen, and a compact `step/total` in the Dynamic Island.

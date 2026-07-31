@@ -24,8 +24,17 @@ class RNLiveActivity: NSObject {
     let stages = options["stages"] as? [String] ?? []
     let stageIndex = options["currentStage"] as? Int ?? 0
     let statusLine = options["statusLine"] as? String ?? ""
+    let accentColorHex = options["accentColorHex"] as? String ?? ""
+    let iconSystemName = options["iconSystemName"] as? String ?? ""
+    let backgroundColorHex = options["backgroundColorHex"] as? String ?? ""
 
-    let attributes = LiveActivityAttributes(title: title, stageLabels: stages)
+    let attributes = LiveActivityAttributes(
+      title: title,
+      stageLabels: stages,
+      accentColorHex: accentColorHex,
+      iconSystemName: iconSystemName,
+      backgroundColorHex: backgroundColorHex
+    )
     let state = LiveActivityAttributes.ContentState(stageIndex: stageIndex, statusLine: statusLine)
     do {
       let activity = try Activity.request(

@@ -13,4 +13,9 @@ struct LiveActivityAttributes: ActivityAttributes {
 
   var title: String
   var stageLabels: [String]
+
+  // Theme — set from JS at start(). Empty strings mean "use the widget default".
+  var accentColorHex: String = ""
+  var iconSystemName: String = ""
+  var backgroundColorHex: String = ""
 }

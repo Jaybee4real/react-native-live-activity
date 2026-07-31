@@ -62,4 +62,23 @@ if (isIos) {
   assert.equal(display.android.progress.current, 3, 'stageKey RELEASED → current 3/3');
 }
 
-console.log(`✓ ${label}: start/update/end + defineFlow all pass`);
+// 4. theme flows to the right place on each platform
+globalThis.__ios = [];
+globalThis.__android = [];
+await LiveActivity.start({
+  id: 'themed',
+  title: 'Themed',
+  stages: ['A', 'B'],
+  theme: {accent: '#FF8800', icon: 'bag.fill', background: '#101010'},
+});
+if (isIos) {
+  const payload = globalThis.__ios[0][1];
+  assert.equal(payload.accentColorHex, '#FF8800', 'iOS gets accent');
+  assert.equal(payload.iconSystemName, 'bag.fill', 'iOS gets SF Symbol');
+  assert.equal(payload.backgroundColorHex, '#101010', 'iOS gets background');
+} else {
+  const display = globalThis.__android.find(entry => entry[0] === 'display')[1];
+  assert.equal(display.android.color, '#FF8800', 'Android accent falls back to theme.accent');
+}
+
+console.log(`✓ ${label}: start/update/end + defineFlow + theme all pass`);

@@ -40,6 +40,12 @@ const toMs = deadline => {
   return Number(deadline) || 0;
 };
 
+const normalizeTheme = theme => ({
+  accent: theme?.accent ?? null,
+  icon: theme?.icon ?? null,
+  background: theme?.background ?? null,
+});
+
 const timeline = (stages, stageIndex) =>
   stages
     .map((stage, index) => {
@@ -72,7 +78,7 @@ async function renderAndroid(state) {
       ongoing: android.ongoing ?? config.ongoing,
       onlyAlertOnce: true,
       pressAction: {id: 'default'},
-      color: android.color ?? config.color,
+      color: android.color ?? state.theme?.accent ?? config.color,
       smallIcon: android.smallIcon ?? config.smallIcon,
       progress: {max: total, current: Math.min(state.stage + 1, total), indeterminate: total === 0},
       style: {type: AndroidStyle.BIGTEXT, text: timeline(state.stages, state.stage)},
@@ -93,6 +99,9 @@ async function pushIos(state, method) {
           currentStage: state.stage,
           statusLine: state.status ?? '',
           deadlineMs: state.deadlineMs ?? 0,
+          accentColorHex: state.theme?.accent ?? '',
+          iconSystemName: state.theme?.icon ?? '',
+          backgroundColorHex: state.theme?.background ?? '',
         }
       : {
           id: state.id,
@@ -123,6 +132,7 @@ export async function start(options = {}) {
     stage: options.stage ?? 0,
     status: options.status ?? '',
     deadlineMs: toMs(options.deadline),
+    theme: normalizeTheme(options.theme),
     android: options.android ?? {},
   };
   registry.set(state.id, state);
