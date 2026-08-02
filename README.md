@@ -28,19 +28,19 @@ Live Activity, branded per app. Rendered on an iPhone Air simulator.
 
 | Delivery | Payments | Ride-hailing |
 |:--------:|:--------:|:------------:|
-| ![Delivery Live Activity](assets/lock-delivery.png) | ![Payments Live Activity](assets/lock-payments.png) | ![Ride Live Activity](assets/lock-ride.png) |
+| ![Delivery Live Activity](https://raw.githubusercontent.com/Jaybee4real/react-native-live-activity/main/assets/lock-delivery.png) | ![Payments Live Activity](https://raw.githubusercontent.com/Jaybee4real/react-native-live-activity/main/assets/lock-payments.png) | ![Ride Live Activity](https://raw.githubusercontent.com/Jaybee4real/react-native-live-activity/main/assets/lock-ride.png) |
 | `#FF6A00` · `bag.fill` | `#12B76A` · `creditcard.fill` | `#FFFFFF` · `car.fill` |
 
 | Booking | Fitness |
 |:-------:|:-------:|
-| ![Booking Live Activity](assets/lock-booking.png) | ![Fitness Live Activity](assets/lock-fitness.png) |
+| ![Booking Live Activity](https://raw.githubusercontent.com/Jaybee4real/react-native-live-activity/main/assets/lock-booking.png) | ![Fitness Live Activity](https://raw.githubusercontent.com/Jaybee4real/react-native-live-activity/main/assets/lock-fitness.png) |
 | `#3D7BFF` · `house.fill` | `#A855F7` · `flame.fill` |
 
 **Dynamic Island** — expanded and compact:
 
 | Expanded | Compact |
 |:--------:|:-------:|
-| ![Dynamic Island expanded](assets/island-expanded.png) | ![Dynamic Island compact](assets/island-compact.png) |
+| ![Dynamic Island expanded](https://raw.githubusercontent.com/Jaybee4real/react-native-live-activity/main/assets/island-expanded.png) | ![Dynamic Island compact](https://raw.githubusercontent.com/Jaybee4real/react-native-live-activity/main/assets/island-compact.png) |
 
 > On Android the same call renders an ongoing progress notification with the
 > stage timeline and accent color.

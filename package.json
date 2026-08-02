@@ -28,11 +28,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/novacraft-engineering/react-native-live-activity.git"
+    "url": "git+https://github.com/Jaybee4real/react-native-live-activity.git"
   },
-  "homepage": "https://github.com/novacraft-engineering/react-native-live-activity#readme",
+  "homepage": "https://github.com/Jaybee4real/react-native-live-activity#readme",
   "bugs": {
-    "url": "https://github.com/novacraft-engineering/react-native-live-activity/issues"
+    "url": "https://github.com/Jaybee4real/react-native-live-activity/issues"
   },
   "author": "Novacraft Engineering",
   "license": "MIT",
