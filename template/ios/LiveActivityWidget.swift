@@ -16,8 +16,13 @@ private func accentColor(_ attributes: LiveActivityAttributes) -> Color {
   Color(hex: attributes.accentColorHex) ?? defaultAccent
 }
 
+// Defaults to a near-black card (premium look with accent details). Pass
+// `theme.background` to override — e.g. set it equal to the accent for a
+// full-color background instead.
+private let defaultBackground = Color(red: 0.05, green: 0.05, blue: 0.07)
+
 private func backgroundColor(_ attributes: LiveActivityAttributes) -> Color {
-  Color(hex: attributes.backgroundColorHex) ?? accentColor(attributes)
+  Color(hex: attributes.backgroundColorHex) ?? defaultBackground
 }
 
 private func glyphName(_ attributes: LiveActivityAttributes) -> String {
@@ -86,20 +91,21 @@ struct LockScreenLiveView: View {
     let total = context.attributes.stageLabels.count
     let step = context.state.stageIndex + 1
     let glyph = glyphName(context.attributes)
+    let accent = accentColor(context.attributes)
     VStack(alignment: .leading, spacing: 8) {
       HStack {
-        Image(systemName: glyph).foregroundColor(.white)
+        Image(systemName: glyph).foregroundColor(accent)
         Text(context.attributes.title).font(.headline).foregroundColor(.white)
         Spacer()
         Text("Step \(step) of \(total)").font(.caption).foregroundColor(.white.opacity(0.7))
       }
-      ProgressView(value: Double(step), total: Double(max(total, 1))).tint(.white)
+      ProgressView(value: Double(step), total: Double(max(total, 1))).tint(accent)
       ForEach(Array(context.attributes.stageLabels.enumerated()), id: \.offset) { index, label in
         HStack(spacing: 6) {
           Image(systemName: index < context.state.stageIndex
             ? "checkmark.circle.fill"
             : (index == context.state.stageIndex ? "circle.fill" : "circle"))
-            .foregroundColor(index <= context.state.stageIndex ? .white : .white.opacity(0.4))
+            .foregroundColor(index <= context.state.stageIndex ? accent : .white.opacity(0.4))
             .font(.caption2)
           Text(label)
             .font(.caption)

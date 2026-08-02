@@ -21,10 +21,35 @@ await order.end({title: 'Delivered', body: 'Enjoy! 🎉'});
 
 That's the whole surface. Everything below is optional.
 
+## Gallery
+
+One component, [themed from JS](#theme-it-from-js-both-platforms) — the same lock-screen
+Live Activity, branded per app. Rendered on an iPhone Air simulator.
+
+| Delivery | Payments | Ride-hailing |
+|:--------:|:--------:|:------------:|
+| ![Delivery Live Activity](assets/lock-delivery.png) | ![Payments Live Activity](assets/lock-payments.png) | ![Ride Live Activity](assets/lock-ride.png) |
+| `#FF6A00` · `bag.fill` | `#12B76A` · `creditcard.fill` | `#FFFFFF` · `car.fill` |
+
+| Booking | Fitness |
+|:-------:|:-------:|
+| ![Booking Live Activity](assets/lock-booking.png) | ![Fitness Live Activity](assets/lock-fitness.png) |
+| `#3D7BFF` · `house.fill` | `#A855F7` · `flame.fill` |
+
+**Dynamic Island** — expanded and compact:
+
+| Expanded | Compact |
+|:--------:|:-------:|
+| ![Dynamic Island expanded](assets/island-expanded.png) | ![Dynamic Island compact](assets/island-compact.png) |
+
+> On Android the same call renders an ongoing progress notification with the
+> stage timeline and accent color.
+
 ---
 
 ## Contents
 
+- [Gallery](#gallery)
 - [Install](#install)
 - [Android setup](#android-setup) — 0 native steps
 - [iOS setup](#ios-setup) — one-time widget target
@@ -214,7 +239,7 @@ await LiveActivity.start({
   theme: {
     accent: '#FF6A00',   // tints the widget (iOS) + notification accent (Android)
     icon: 'bag.fill',    // iOS SF Symbol — https://developer.apple.com/sf-symbols
-    background: '#101010' // iOS lock-screen background (defaults to accent)
+    background: '#101010' // iOS card background (defaults to near-black; set = accent for a full-color card)
   },
 });
 ```

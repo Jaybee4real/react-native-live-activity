@@ -22,7 +22,7 @@ export interface Theme {
   accent?: string;
   /** iOS SF Symbol name for the glyph (e.g. `'bag.fill'`). iOS only. */
   icon?: string;
-  /** iOS lock-screen background hex. Defaults to the accent. iOS only. */
+  /** iOS lock-screen background hex. Defaults to near-black; set equal to `accent` for a full-color card. iOS only. */
   background?: string;
 }
 
