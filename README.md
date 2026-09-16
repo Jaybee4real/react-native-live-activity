@@ -1,3 +1,5 @@
+<img src=".github/banner.png" alt="react-native-live-activity by Novacraft" width="100%">
+
 # @novacraft-engineering/react-native-live-activity
 
 Live-updating notifications for React Native, one tiny API.
